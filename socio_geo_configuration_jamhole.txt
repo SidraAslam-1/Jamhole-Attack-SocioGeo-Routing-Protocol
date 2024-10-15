@@ -1,0 +1,57 @@
+###############fire_hidden_mode_wh attack_impact_study##############33333
+
+
+#Scenario.name = socio_geo_fire_normal_scenario                                                    
+Scenario.name = socio_geo_fire_attack_scenario
+
+Scenario.simulateConnections = false
+Scenario.updateInterval = 2
+Scenario.endTime = 86400  
+Scenario.globalConnectivityMonitor = true
+
+
+Group.nrofHosts = 145
+Events1.hosts = 0,145
+
+
+
+Group.router = SocialGeoRouter
+SocialGeoRouter.nrofCopies = 6
+SocialGeoRouter.binaryMode = true
+
+
+#Group.nodeLocation = 0,1
+# message TTL in minutes (22 hrs)
+Group.msgTtl = 79200
+
+
+
+
+Events.nrof = 1
+Events1.class = ExternalEventsQueue
+
+
+#Events1.filePath = mobility_traces/time_collapse_fire_86400_connectivity.txt
+Events1.filePath = mobility_traces/socio_geo_fire_20.0_21600_59616.0
+
+
+Events.nrof = 2
+
+## Message creation parameters
+Events2.class = ExternalEventsQueue
+Events2.filePath = toolkit/test_message_events.msg
+
+
+## Default settings for the report
+# how many reports to load
+Report.nrofReports = 1
+
+
+# default directory of reports (can be overridden per Report with output setting)
+Report.reportDir = reports/
+# Report classes to load
+
+# length of the warm up period (simulated seconds)
+# warmup period 6 hrs
+Report.warmup = 21600
+Report.report1 = RoutedMessagesReport
